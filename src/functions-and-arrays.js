@@ -39,9 +39,28 @@ function sumNumbers(arr) {
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arr) {
+  if (arr.length === 0) return 0;
+  let counter = 0;
+  for (let i=0; i<arr.length; i++){
+    if(typeof arr[i] === "string"){
+      counter += arr[i].length;
+    } else if(typeof arr[i] === "number"){
+      counter += arr[i];
+    } else if(arr[i] === true){
+      counter++;
+    } else if (arr[i] === false){
+      counter += 0;
+    } else if( Array.isArray(arr[i]) || typeof arr[i] === "object"){
+      throw new Error ("Unsupported data type sir or ma'am");
+    }
+  }
+  return counter;
+}
 
 
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10,];
+console.log("SUM RETURNS: ", sum(mixedArr));
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -120,7 +139,7 @@ function doesWordExist(arr, word) {
 return false;
 }
 
-console.log(doesWordExist(wordsFind, 'trouble'));
+console.log("WORDFIND RETURNS: ", doesWordExist(wordsFind, 'trouble'));
 
 
 
@@ -197,3 +216,6 @@ if (typeof module !== 'undefined') {
     greatestProduct
   };
 }
+
+
+
