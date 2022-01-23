@@ -41,6 +41,7 @@ function sumNumbers(arr) {
 // Iteration #3.1 Bonus:
 function sum(arr) {
   if (arr.length === 0) return 0;
+  
   let counter = 0;
   for (let i=0; i<arr.length; i++){
     if(typeof arr[i] === "string"){
@@ -91,7 +92,29 @@ function averageWordLength(arr) {
 }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if (arr.length===0) return null;
+
+  let counter = 0;
+  for (let i=0; i<arr.length; i++){
+    if(typeof arr[i] === "string"){
+      counter += arr[i].length;
+    } else if(typeof arr[i] === "number"){
+      counter += arr[i];
+    } else if(arr[i] === true){
+      counter++;
+    } else if (arr[i] === false){
+      counter += 0;
+    } else if( Array.isArray(arr[i]) || typeof arr[i] === "object"){
+      throw new Error ("Unsupported data type sir or ma'am");
+    }
+  }
+  return Math.round((counter/arr.length)*100)/100;
+  
+}
+
+const newMixed = [6, 12, 'miami', 1, 'barca', '200', 'lisboa', 8, false]
+console.log("AVG RETURNS: ", avg(newMixed));
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
